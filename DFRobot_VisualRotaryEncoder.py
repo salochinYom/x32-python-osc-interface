@@ -145,7 +145,7 @@ class DFRobot_VisualRotaryEncoder(object):
         '''
         if ((0x01 <= gain_value) and (0x33 >= gain_value)):
             self._write_reg(VISUAL_ROTARY_ENCODER_GAIN_REG, gain_value)
-    def handle_button(self):
+    def handle_sensor(self):
         '''!
           @brief handle the button press counting and timing
         '''
@@ -195,6 +195,13 @@ class DFRobot_VisualRotaryEncoder(object):
             self._write_reg(VISUAL_ROTARY_ENCODER_KEY_STATUS_REG, 0)
             ret = True
         return ret
+    
+    def encoder_as_float(self):
+        '''!
+          @brief gets encoder value as a float between 0.0 and 1.0`
+          @return float value between 0.0 and 1.0
+        '''
+        return self.get_encoder_value() / 1023.0
 
     def _write_reg(self, reg, data):
         '''!

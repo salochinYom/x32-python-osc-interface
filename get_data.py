@@ -79,10 +79,11 @@ def loop():
  #print("The encoder current counts: %d" %encoder_value)
 
   #handle button
-  sensor.handle_button()
+  sensor.handle_sensor()
   #check button state
   if sensor.check_down_button_unhandled():
     print("Button pressed!")
+  print("Encoder value as float: %.3f" %sensor.encoder_as_float())
   #time.sleep(0.1)
 
 
